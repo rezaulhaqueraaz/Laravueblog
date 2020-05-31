@@ -13,6 +13,7 @@ step one <br>
  then run command <br>
  php artisan migrate<br>
  and php artisan db:seed<br>
+ npm install<br>
  then you have two account create <br>
  admin<br>
  admin@lara.com
