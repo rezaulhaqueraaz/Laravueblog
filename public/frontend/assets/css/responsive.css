@@ -1,0 +1,208 @@
+/* Normal desktop :1200px. */
+@media (min-width: 1501px){
+
+    .hamburger-menu{
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+
+    .line{
+        display: none;
+    }
+    .small-user-login{
+        display: none;
+    }
+    .small-bottom-navbar{
+        display: none;
+    }
+    .slider .owl-carousel .owl-nav div {
+        top: 92%;
+    }
+    .slider .owl-carousel .owl-nav div.owl-next {
+        left: 15.5%;
+        border: none;
+    }
+    .hamburger-menu{
+        display: none;
+    }
+}
+
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .line{
+        display: none;
+    }
+    .small-user-login{
+        display: none;
+    }
+    .small-bottom-navbar{
+        display: none;
+    }
+    .slider .owl-carousel .owl-nav div {
+        top: 92%;
+    }
+    .slider .owl-carousel .owl-nav div.owl-next {
+        left: 15.5%;
+        border: none;
+    }
+}
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+    .large-menu{
+        display: none;
+    }
+    .line{
+        display: block;
+    }
+    .small-user-login{
+        display: block;
+    }
+    .small-bottom-navbar{
+        display: block;
+    }
+    .slider {
+        margin-top: 4%;
+    }
+    .small-bottom-navbar {
+        bottom: 0%;
+    }
+    .popular-post-title {
+        width: 60%;
+        float: left;
+        margin-top: 0%;
+    }
+
+}
+
+/* small mobile :320px. */
+@media (max-width: 767px) {
+    .category-name{
+        margin-top: 16%;
+    }
+    .popular-post-img {
+        padding: 2px 8px 0px 0px;
+        float: left;
+    }
+    .lara-nav-list {
+        margin-top: 40%;
+        width: 100%;
+    }
+    .lara-nav-item {
+        list-style: none;
+        display: block;
+        padding: 5px 22px 5px 1px;
+        margin: 8px;
+    }
+    .lara-nav-link {
+        font-size: 18px;
+        letter-spacing: 1px;
+        padding: 0px;
+    }
+    .lara-navbar {
+        width: 60%;
+    }
+    .likecom {
+        width: 40%;
+        float: left;
+    }
+    .slider {
+        margin-top: 9%;
+    }
+    .small-bottom-navbar{
+        display: block;
+    }
+    .small-user-login{
+        display: block;
+    }
+    .large-menu{
+        display: none;
+    }
+    .line{
+        display: block;
+    }
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        background-size: cover;
+        background-position: center 50%;
+    }
+    .slider-category ul li {
+        list-style: none;
+        float: left;
+        margin-right: 10px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .slider-title {
+        position: absolute;
+        top: 31%;
+        left: 10%;
+        width: 60%;
+    }
+    .slider .slider-category {
+        position: absolute;
+        width: 50%;
+        top: 22%;
+        left: 10%;
+    }
+    .slider .owl-carousel .owl-nav div {
+        height: 40px;
+        left: 10%;
+        line-height: 18px;
+        border-right: none;
+    }
+    .slider-title h3 {
+        color: #eceff8;
+        line-height: 35px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .slider-button {
+        margin-top: 5px;
+        padding: 1px 6px;
+        border-radius: 5px;
+        display: inline-block;
+        background-color: red;
+        font-size: 14px;
+    }
+    .slider .owl-carousel .owl-nav div.owl-next {
+        left: 80%;
+        border: none;
+    }
+    .wholike img {
+        border: 3px solid #eceff8;
+        width: 63%;
+        height: 35px;
+        border-radius: 50%;
+    }
+    .likemore h5{
+        font-size: 12px;
+    }
+    .slider .owl-carousel .owl-nav div {
+        top: 95%;
+    }
+    .writer-name {
+         margin-top: 1.5%;
+         left: 8%;
+     }
+    .laracard-title h5 {
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+}
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+
+}
