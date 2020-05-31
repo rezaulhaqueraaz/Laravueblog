@@ -13,7 +13,7 @@ step one <br>
  then run command <br>
  php artisan migrate<br>
  and php artisan db:seed<br>
- then you two account create <br>
+ then you have two account create <br>
  admin<br>
  admin@lara.com
  12345678
