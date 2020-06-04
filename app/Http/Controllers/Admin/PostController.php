@@ -10,7 +10,7 @@ use App\User;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -24,21 +24,44 @@ class PostController extends Controller
       $user =User::find(Auth::user()->id);
       if (isset($image))
       {
-          $imagename = 'storage/post/'.uniqid().Auth::user()->id.'.'.$image->getClientOriginalExtension();
+          $imagename = Auth::user()->name.'_'.uniqid().Auth::user()->id.'.'.$image->getClientOriginalExtension();
+          $smallImage= 'imageGallery/img500/'.$imagename;
+          $thumbnail= 'imageGallery/thumbnail/'.$imagename;
           //  check category dir is exists
-          if (!File::exists("storage/post")) {
-              File::makeDirectory("storage/post",0777,true);
+          if (!File::exists("imageGallery/post")) {
+              File::makeDirectory("imageGallery/post",0777,true);
           }
-          $destinationPath = 'storage/post';
+          if (!File::exists("imageGallery/img500")) {
+              File::makeDirectory("imageGallery/img500",0777,true);
+          }
+          $destinationPath = 'imageGallery/post/';
           $image->move($destinationPath, $imagename);
-          function make_slug($string) {
-              return preg_replace('/\s+/u', '-', trim($string));
-          }
 
-          $slug = uniqid().make_slug($request->title);
+          //width 500/ small size area
+          $img = Image::make($destinationPath.$imagename);
+          $img->resize(400, null, function ($constraint) {
+              $constraint->aspectRatio();
+          });
+          $img->save($smallImage,90);
+
+          //thumbnail size area
+          $img = Image::make($destinationPath.$imagename);
+          $img->resize(100, null, function ($constraint) {
+              $constraint->aspectRatio();
+          });
+          $img->save($thumbnail,60);
+
+
+          $slug = make_slug($request->title);
+          $findSlug=Post::where('slug',$slug)->first();
+          if ($findSlug=null){
+              $newSlug= $slug;
+          }else{
+              $newSlug='new_'.$slug;
+          }
           $post=new Post();
           $post->title=$request->title;
-          $post->slug=$slug;
+          $post->slug=$newSlug;
           $post->content=$request->description;
           $post->content_excerpt=$request->excerpt;
           $post->position=$request->position;
@@ -59,7 +82,7 @@ class PostController extends Controller
   }
 
   public function table(){
-      $postall=Post::all();
+      $postall=Post::orderBy('id', 'desc')->get();
       return view('admin.post.table',compact('postall'));
   }
 
@@ -80,18 +103,43 @@ class PostController extends Controller
       $post=Post::find($id);
       if (isset($image))
       {
-          $imagename = 'storage/post/'.uniqid().Auth::user()->id.'.'.$image->getClientOriginalExtension();
+          $imagename = Auth::user()->name.'_'.uniqid().Auth::user()->id.'.'.$image->getClientOriginalExtension();
+          $smallImage= 'imageGallery/img500/'.$imagename;
+          $thumbnail= 'imageGallery/thumbnail/'.$imagename;
           //  check category dir is exists
-          if (!File::exists("storage/post")) {
-              File::makeDirectory("storage/post",0777,true);
+          if (!File::exists("imageGallery/post")) {
+              File::makeDirectory("imageGallery/post",0777,true);
+          }
+          if (!File::exists("imageGallery/img500")) {
+              File::makeDirectory("imageGallery/img500",0777,true);
+          }
+          if (!File::exists("imageGallery/thumbnail")) {
+              File::makeDirectory("imageGallery/thumbnail",0777,true);
           }
           // delete old image
-          if (File::exists($post->image))
+          if (File::exists('imageGallery/post/'.$post->image))
           {
-              File::delete($post->image);
+              File::delete('imageGallery/post/'.$post->image);
+              File::delete('imageGallery/img500/'.$post->image);
           }
-          $destinationPath = 'storage/post';
+
+          $destinationPath = 'imageGallery/post/';
           $image->move($destinationPath, $imagename);
+
+         //width 500/ small size area
+          $img = Image::make($destinationPath.$imagename);
+          $img->resize(400, null, function ($constraint) {
+              $constraint->aspectRatio();
+          });
+          $img->save($smallImage,90);
+
+          //thumbnail size area
+          $img = Image::make($destinationPath.$imagename);
+          $img->resize(100, null, function ($constraint) {
+              $constraint->aspectRatio();
+          });
+          $img->save($thumbnail,60);
+
       }else {
           $imagename = $post->image;
       }
@@ -99,10 +147,17 @@ class PostController extends Controller
           return preg_replace('/\s+/u', '-', trim($string));
       }
 
-      $slug = uniqid().make_slug($request->title);
+      $slug = make_slug($request->title);
+      $findSlug=Post::where('slug',$slug)->first();
+      if ($findSlug=null){
+          $newSlug= $slug;
+      }else{
+          $newSlug='new_'.$slug;
+      }
+
       $post=Post::find($id);
       $post->title=$request->title;
-      $post->slug=$slug;
+      $post->slug=$newSlug;
       $post->position=$request->position;
       $post->content_excerpt=$request->excerpt;
       $post->content=$request->description;

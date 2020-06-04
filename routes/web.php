@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index')->name('Homepage');
 Route::get('/blog', 'FrontendController@blog')->name('blog');
-Route::get('/frontend/single/{slug}', 'FrontendController@singleview')->name('frontend.single');
+Route::get('/article/{slug}', 'FrontendController@singleview')->name('frontend.single');
 Route::get('/category/single/{id}', 'FrontendController@cateview')->name('category.single');
 Route::Post('/frontend/like', 'FrontendController@likePost')->name('frontend.post.like');
 Route::get('/get/likeInformation', 'FrontendController@getlike')->name('post.get.like');

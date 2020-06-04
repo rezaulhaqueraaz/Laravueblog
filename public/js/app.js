@@ -2246,6 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.getlikedata = _this.getLikeData();
         _this.LikeError = response.data.error;
         console.log(response.data.Success);
+        console.log(response.data.error);
         console.log(response.data.dataDelete);
       })["catch"](function (error) {
         console.log(error);

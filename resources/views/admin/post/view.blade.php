@@ -35,7 +35,7 @@
                            <div class="container">
                                <h3 class="text-center">{{$post->title}}</h3>
                                <div class="post-image">
-                                   <img src="{{asset($post->image)}}" alt="">
+                                   <img src="{{fullImage($post->image)}}" alt="">
                                </div>
                                <div class="post-content">
                                    <h4>Author: {{$post->user->name}}</h4>

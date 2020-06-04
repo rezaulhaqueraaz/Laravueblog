@@ -7,8 +7,7 @@
 @push('topjs')
 @endpush
 @section('content')
-    @include('layouts.parts.menu')
-
+    <h2>404 page</h2>
 @endsection
 @push('js')
 @endpush

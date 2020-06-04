@@ -44,7 +44,7 @@
                         <div class="card-box">
                             <h4 class="text-dark header-title m-t-0 m-b-30">Fetured Images</h4>
                             <div class="img-thumbnail" style="overflow: hidden;">
-                                <img width="250" id="blah"  src="{{asset($post->image)}}" alt="">
+                                <img width="250" id="blah"  src="{{imgPathSmall($post->image)}}" alt="">
                             </div>
                             <div class="form-group m-b-0">
                                 <input type="file" id="imgInp" name="file" class="filestyle" data-buttonname="btn-primary">

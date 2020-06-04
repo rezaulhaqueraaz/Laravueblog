@@ -70,10 +70,7 @@
                             <div class="form-group">
                                 <label for="inputState">Position</label>
                                 <select name="position" id="inputState" class="form-control">
-                                    <option value="1">Most Popular</option>
                                     <option value="4">Blog Section</option>
-                                    <option value="2" disabled>Slider Section</option>
-                                    <option value="3" disabled>Trending Section</option>
                                 </select>
                             </div>
                             <div class="form-group">

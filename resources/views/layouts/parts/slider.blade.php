@@ -4,8 +4,9 @@
         <div class="row">
             <div class="container-fluid">
                 <div class="owl-carousel">
+
                     @foreach($slider as $sliders)
-                    <div class="slider" style="background-image: url('{{asset($sliders->image)}}');">
+                    <div class="slider" style="background-image: url('{{fullImage($sliders->image)}}');">
                         <div class="slider-category">
                             <ul>
                                 <li><a href="" class="text-danger"><i class="fas fa-caret-right"></i></a></li>

@@ -16,26 +16,27 @@ class FrontendController extends Controller
         $trending=Post::where('position','3')->latest()->get();
         $popular=Post::where('position', '=', '1')->where('status','=','1')->latest()->get();
         $blog=Post::where('position', '=', '4')->where('status','=','1')->where('is_approved','=','1')->latest()->limit(6)->get();
-        return view('welcome',compact('blog','slider'));
+        return view('welcome',compact('blog','slider','popular'));
     }
     public function blog(){
         $post=Post::all();
         return view('blog',compact('post'));
     }
     public function singleview($slug){
-
+        $popular=Post::where('position', '=', '1')->where('status','=','1')->latest()->get();
         $post=Post::where('slug',$slug)->first();
         if ($post!=null){
-            return view('single',compact('post'));
+            return view('single',compact('post','popular'));
         }else{
             return view('404');
         }
 
     }
     public function cateview($id){
+      $popular=Post::where('position', '=', '1')->where('status','=','1')->latest()->get();
       $cateBlog=Category::find($id);
         if ($cateBlog!=null){
-            return view('category',compact('cateBlog'));
+            return view('category',compact('cateBlog','popular'));
         }else{
             return view('404');
         }
@@ -61,8 +62,12 @@ class FrontendController extends Controller
 
     }
     public function getlike(){
-        $getdata=Likepost::where('user_id',Auth::user()->id)->get();
-        return response()->json(['GetLikeData'=>$getdata]);
+       if (Auth::check()){
+           $getdata=Likepost::where('user_id',Auth::user()->id)->get();
+           return response()->json(['GetLikeData'=>$getdata]);
+       }else{
+           return response()->json(['GetLikeData']);
+       }
     }
 
 }

@@ -26,7 +26,7 @@
                                     <h5>{{$post->title}}</h5>
                                 </div>
                                 <div class="laracard-img">
-                                    <img src="{{asset($post->image)}}" alt="">
+                                    <img src="{{fullImage($post->image)}}" alt="">
                                 </div>
                                 <div class="single-content">
                                     {!! $post->content !!}

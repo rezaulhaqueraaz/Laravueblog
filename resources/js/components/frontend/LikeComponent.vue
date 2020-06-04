@@ -51,6 +51,7 @@
                     this.getlikedata=this.getLikeData();
                     this.LikeError=response.data.error;
                     console.log(response.data.Success)
+                    console.log(response.data.error)
                     console.log(response.data.dataDelete)
                     })
                     .catch(function (error) {

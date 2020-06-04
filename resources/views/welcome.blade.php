@@ -30,7 +30,7 @@
                                             </div>
                                         </a>
                                         <div class="laracard-img">
-                                            <img src="{{$posts->image}}" alt="">
+                                            <img src="{{imgPathSmall($posts->image)}}" alt="">
                                             <div class="writer-info-area">
                                                 <div class="writer-img">
                                                     <img src="{{asset($posts->user->images)}}" alt="">
@@ -66,7 +66,7 @@
                                             </div>
                                         </a>
                                             <div class="laracard-img">
-                                                <img src="{{$posts->image}}" alt="">
+                                                <img src="{{imgPathSmall($posts->image)}}" alt="">
                                                 <div class="writer-info-area">
                                                     <div class="writer-img">
                                                         <img src="{{asset($posts->user->images)}}" alt="">
